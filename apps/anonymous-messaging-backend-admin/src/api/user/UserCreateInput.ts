@@ -2,11 +2,10 @@ import { InputJsonValue } from "../../types";
 import { UserInterestCreateNestedManyWithoutUsersInput } from "./UserInterestCreateNestedManyWithoutUsersInput";
 
 export type UserCreateInput = {
-  email?: string | null;
-  firstName?: string | null;
-  lastName?: string | null;
+  bio?: string | null;
   password: string;
   roles: InputJsonValue;
+  studentEmail?: string | null;
   userInterests?: UserInterestCreateNestedManyWithoutUsersInput;
   username: string;
 };

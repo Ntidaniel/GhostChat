@@ -36,13 +36,12 @@ model Message {
 }
 
 model User {
+  bio           String?
   createdAt     DateTime       @default(now())
-  email         String?        @unique
-  firstName     String?
   id            String         @id @default(auto()) @map("_id") @db.ObjectId
-  lastName      String?
   password      String
   roles         Json
+  studentEmail  String?
   updatedAt     DateTime       @updatedAt
   userInterests UserInterest[]
   username      String         @unique

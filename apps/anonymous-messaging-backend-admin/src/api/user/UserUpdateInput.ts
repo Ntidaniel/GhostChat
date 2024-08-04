@@ -2,11 +2,10 @@ import { InputJsonValue } from "../../types";
 import { UserInterestUpdateManyWithoutUsersInput } from "./UserInterestUpdateManyWithoutUsersInput";
 
 export type UserUpdateInput = {
-  email?: string | null;
-  firstName?: string | null;
-  lastName?: string | null;
+  bio?: string | null;
   password?: string;
   roles?: InputJsonValue;
+  studentEmail?: string | null;
   userInterests?: UserInterestUpdateManyWithoutUsersInput;
   username?: string;
 };

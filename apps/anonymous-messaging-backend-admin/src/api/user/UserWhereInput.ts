@@ -3,10 +3,9 @@ import { StringFilter } from "../../util/StringFilter";
 import { UserInterestListRelationFilter } from "../userInterest/UserInterestListRelationFilter";
 
 export type UserWhereInput = {
-  email?: StringNullableFilter;
-  firstName?: StringNullableFilter;
+  bio?: StringNullableFilter;
   id?: StringFilter;
-  lastName?: StringNullableFilter;
+  studentEmail?: StringNullableFilter;
   userInterests?: UserInterestListRelationFilter;
   username?: StringFilter;
 };
