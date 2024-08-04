@@ -3,11 +3,9 @@ import { UserInterest } from "../userInterest/UserInterest";
 
 export type User = {
   createdAt: Date;
-  email: string | null;
-  firstName: string | null;
   id: string;
-  lastName: string | null;
   roles: JsonValue;
+  studentEmail: string | null;
   updatedAt: Date;
   userInterests?: Array<UserInterest>;
   username: string;
