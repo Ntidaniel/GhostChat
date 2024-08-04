@@ -1,6 +1,7 @@
 import { SortOrder } from "../../util/SortOrder";
 
 export type UserOrderByInput = {
+  bio?: SortOrder;
   createdAt?: SortOrder;
   id?: SortOrder;
   password?: SortOrder;

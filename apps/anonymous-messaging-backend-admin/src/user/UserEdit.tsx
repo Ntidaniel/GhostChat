@@ -4,9 +4,9 @@ import {
   Edit,
   SimpleForm,
   EditProps,
+  TextInput,
   PasswordInput,
   SelectArrayInput,
-  TextInput,
   ReferenceArrayInput,
 } from "react-admin";
 
@@ -17,6 +17,7 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
+        <TextInput label="bio" multiline source="bio" />
         <PasswordInput label="Password" source="password" />
         <SelectArrayInput
           source="roles"

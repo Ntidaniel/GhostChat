@@ -52,6 +52,7 @@ export class UserControllerBase {
     return await this.service.createUser({
       data: data,
       select: {
+        bio: true,
         createdAt: true,
         id: true,
         roles: true,
@@ -79,6 +80,7 @@ export class UserControllerBase {
     return this.service.users({
       ...args,
       select: {
+        bio: true,
         createdAt: true,
         id: true,
         roles: true,
@@ -107,6 +109,7 @@ export class UserControllerBase {
     const result = await this.service.user({
       where: params,
       select: {
+        bio: true,
         createdAt: true,
         id: true,
         roles: true,
@@ -144,6 +147,7 @@ export class UserControllerBase {
         where: params,
         data: data,
         select: {
+          bio: true,
           createdAt: true,
           id: true,
           roles: true,
@@ -180,6 +184,7 @@ export class UserControllerBase {
       return await this.service.deleteUser({
         where: params,
         select: {
+          bio: true,
           createdAt: true,
           id: true,
           roles: true,
