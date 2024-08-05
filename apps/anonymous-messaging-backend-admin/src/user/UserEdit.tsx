@@ -7,6 +7,7 @@ import {
   TextInput,
   BooleanInput,
   DateTimeInput,
+  NumberInput,
   ReferenceArrayInput,
   SelectArrayInput,
   PasswordInput,
@@ -20,9 +21,11 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
+        <div />
         <TextInput label="bio" multiline source="bio" />
         <BooleanInput label="isActive" source="isActive" />
         <DateTimeInput label="lastActive" source="lastActive" />
+        <NumberInput step={1} label="locationRadius" source="locationRadius" />
         <ReferenceArrayInput
           source="notifications"
           reference="Notification"

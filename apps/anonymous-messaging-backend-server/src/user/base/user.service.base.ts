@@ -91,7 +91,13 @@ export class UserServiceBase {
       })
       .userInterests(args);
   }
+  async FetchUsersBasedOnFilters(args: UserWhereUniqueInput): Promise<User[]> {
+    throw new Error("Not implemented");
+  }
   async GetUserStatus(args: UserWhereUniqueInput): Promise<User> {
+    throw new Error("Not implemented");
+  }
+  async UpdateUserFilters(args: UserUpdateInput): Promise<User> {
     throw new Error("Not implemented");
   }
   async UpdateUserStatus(args: UserUpdateInput): Promise<User> {

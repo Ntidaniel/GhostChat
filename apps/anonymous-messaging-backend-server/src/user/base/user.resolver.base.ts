@@ -178,12 +178,28 @@ export class UserResolverBase {
     return results;
   }
 
+  @graphql.Query(() => [User])
+  async FetchUsersBasedOnFilters(
+    @graphql.Args()
+    args: UserWhereUniqueInput
+  ): Promise<User[]> {
+    return this.service.FetchUsersBasedOnFilters(args);
+  }
+
   @graphql.Query(() => User)
   async GetUserStatus(
     @graphql.Args()
     args: UserWhereUniqueInput
   ): Promise<User> {
     return this.service.GetUserStatus(args);
+  }
+
+  @graphql.Mutation(() => User)
+  async UpdateUserFilters(
+    @graphql.Args()
+    args: UserUpdateInput
+  ): Promise<User> {
+    return this.service.UpdateUserFilters(args);
   }
 
   @graphql.Mutation(() => User)

@@ -19,11 +19,13 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
+        <TextField label="ageRange" source="ageRange" />
         <TextField label="bio" source="bio" />
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
         <BooleanField label="isActive" source="isActive" />
         <TextField label="lastActive" source="lastActive" />
+        <TextField label="locationRadius" source="locationRadius" />
         <TextField label="Roles" source="roles" />
         <TextField label="studentEmail" source="studentEmail" />
         <DateField source="updatedAt" label="Updated At" />

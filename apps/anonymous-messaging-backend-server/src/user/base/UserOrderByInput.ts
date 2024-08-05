@@ -28,6 +28,17 @@ class UserOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  ageRange?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   bio?: SortOrder;
 
   @ApiProperty({
@@ -73,6 +84,17 @@ class UserOrderByInput {
     nullable: true,
   })
   lastActive?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  locationRadius?: SortOrder;
 
   @ApiProperty({
     required: false,

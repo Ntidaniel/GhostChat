@@ -11,23 +11,38 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { IsJSONValue } from "../../validators";
+
 import {
+  IsOptional,
   IsString,
   MaxLength,
-  IsOptional,
   IsBoolean,
   IsDate,
+  IsInt,
+  Min,
+  Max,
   ValidateNested,
 } from "class-validator";
-import { Type } from "class-transformer";
-import { NotificationUpdateManyWithoutUsersInput } from "./NotificationUpdateManyWithoutUsersInput";
-import { IsJSONValue } from "../../validators";
+
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
+import { Type } from "class-transformer";
+import { NotificationUpdateManyWithoutUsersInput } from "./NotificationUpdateManyWithoutUsersInput";
 import { UserInterestUpdateManyWithoutUsersInput } from "./UserInterestUpdateManyWithoutUsersInput";
 
 @InputType()
 class UserUpdateInput {
+  @ApiProperty({
+    required: false,
+  })
+  @IsJSONValue()
+  @IsOptional()
+  @Field(() => GraphQLJSON, {
+    nullable: true,
+  })
+  ageRange?: InputJsonValue;
+
   @ApiProperty({
     required: false,
     type: String,
@@ -61,6 +76,19 @@ class UserUpdateInput {
     nullable: true,
   })
   lastActive?: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Min(-999999999)
+  @Max(999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  locationRadius?: number | null;
 
   @ApiProperty({
     required: false,
