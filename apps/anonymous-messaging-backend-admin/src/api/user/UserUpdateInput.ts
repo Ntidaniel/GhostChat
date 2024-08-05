@@ -4,6 +4,8 @@ import { UserInterestUpdateManyWithoutUsersInput } from "./UserInterestUpdateMan
 
 export type UserUpdateInput = {
   bio?: string | null;
+  isActive?: boolean | null;
+  lastActive?: Date | null;
   notifications?: NotificationUpdateManyWithoutUsersInput;
   password?: string;
   roles?: InputJsonValue;

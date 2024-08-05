@@ -30,6 +30,8 @@ import { NotificationFindManyArgs } from "../../notification/base/NotificationFi
 import { Notification } from "../../notification/base/Notification";
 import { UserInterestFindManyArgs } from "../../userInterest/base/UserInterestFindManyArgs";
 import { UserInterest } from "../../userInterest/base/UserInterest";
+import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
+import { UserUpdateInput } from "./UserUpdateInput";
 import { UserService } from "../user.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => User)
@@ -174,5 +176,21 @@ export class UserResolverBase {
     }
 
     return results;
+  }
+
+  @graphql.Query(() => User)
+  async GetUserStatus(
+    @graphql.Args()
+    args: UserWhereUniqueInput
+  ): Promise<User> {
+    return this.service.GetUserStatus(args);
+  }
+
+  @graphql.Mutation(() => User)
+  async UpdateUserStatus(
+    @graphql.Args()
+    args: UserUpdateInput
+  ): Promise<User> {
+    return this.service.UpdateUserStatus(args);
   }
 }
