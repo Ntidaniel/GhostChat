@@ -8,11 +8,12 @@ import {
   DateField,
   ReferenceManyField,
   Datagrid,
+  BooleanField,
   ReferenceField,
 } from "react-admin";
 
-import { INTEREST_TITLE_FIELD } from "../interest/InterestTitle";
 import { USER_TITLE_FIELD } from "./UserTitle";
+import { INTEREST_TITLE_FIELD } from "../interest/InterestTitle";
 
 export const UserShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -25,6 +26,22 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
         <TextField label="studentEmail" source="studentEmail" />
         <DateField source="updatedAt" label="Updated At" />
         <TextField label="Username" source="username" />
+        <ReferenceManyField
+          reference="Notification"
+          target="userId"
+          label="Notifications"
+        >
+          <Datagrid rowClick="show">
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="ID" source="id" />
+            <TextField label="message" source="message" />
+            <BooleanField label="readStatus" source="readStatus" />
+            <DateField source="updatedAt" label="Updated At" />
+            <ReferenceField label="user" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
+          </Datagrid>
+        </ReferenceManyField>
         <ReferenceManyField
           reference="UserInterest"
           target="userId"

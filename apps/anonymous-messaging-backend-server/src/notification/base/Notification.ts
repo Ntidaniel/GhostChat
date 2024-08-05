@@ -12,33 +12,18 @@ https://docs.amplication.com/how-to/custom-code
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import {
+  IsDate,
   IsString,
   MaxLength,
   IsOptional,
-  IsDate,
+  IsBoolean,
   ValidateNested,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { Notification } from "../../notification/base/Notification";
-import { IsJSONValue } from "../../validators";
-import { GraphQLJSON } from "graphql-type-json";
-import { JsonValue } from "type-fest";
-import { UserInterest } from "../../userInterest/base/UserInterest";
+import { User } from "../../user/base/User";
 
 @ObjectType()
-class User {
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @MaxLength(1000)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  bio!: string | null;
-
+class Notification {
   @ApiProperty({
     required: true,
   })
@@ -57,30 +42,26 @@ class User {
 
   @ApiProperty({
     required: false,
-    type: () => [Notification],
-  })
-  @ValidateNested()
-  @Type(() => Notification)
-  @IsOptional()
-  notifications?: Array<Notification>;
-
-  @ApiProperty({
-    required: true,
-  })
-  @IsJSONValue()
-  @Field(() => GraphQLJSON)
-  roles!: JsonValue;
-
-  @ApiProperty({
-    required: false,
     type: String,
   })
   @IsString()
+  @MaxLength(1000)
   @IsOptional()
   @Field(() => String, {
     nullable: true,
   })
-  studentEmail!: string | null;
+  message!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  readStatus!: boolean | null;
 
   @ApiProperty({
     required: true,
@@ -92,20 +73,12 @@ class User {
 
   @ApiProperty({
     required: false,
-    type: () => [UserInterest],
+    type: () => User,
   })
   @ValidateNested()
-  @Type(() => UserInterest)
+  @Type(() => User)
   @IsOptional()
-  userInterests?: Array<UserInterest>;
-
-  @ApiProperty({
-    required: true,
-    type: String,
-  })
-  @IsString()
-  @Field(() => String)
-  username!: string;
+  user?: User | null;
 }
 
-export { User as User };
+export { Notification as Notification };
