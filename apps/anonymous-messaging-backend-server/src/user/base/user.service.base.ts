@@ -20,6 +20,9 @@ import {
 
 import { PasswordService } from "../../auth/password.service";
 import { transformStringFieldUpdateInput } from "../../prisma.util";
+import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
+import { User } from "./User";
+import { UserUpdateInput } from "./UserUpdateInput";
 
 export class UserServiceBase {
   constructor(
@@ -87,5 +90,11 @@ export class UserServiceBase {
         where: { id: parentId },
       })
       .userInterests(args);
+  }
+  async GetUserStatus(args: UserWhereUniqueInput): Promise<User> {
+    throw new Error("Not implemented");
+  }
+  async UpdateUserStatus(args: UserUpdateInput): Promise<User> {
+    throw new Error("Not implemented");
   }
 }

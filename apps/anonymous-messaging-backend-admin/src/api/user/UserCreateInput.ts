@@ -4,6 +4,8 @@ import { UserInterestCreateNestedManyWithoutUsersInput } from "./UserInterestCre
 
 export type UserCreateInput = {
   bio?: string | null;
+  isActive?: boolean | null;
+  lastActive?: Date | null;
   notifications?: NotificationCreateNestedManyWithoutUsersInput;
   password: string;
   roles: InputJsonValue;

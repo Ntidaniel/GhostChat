@@ -39,6 +39,8 @@ model User {
   bio           String?
   createdAt     DateTime       @default(now())
   id            String         @id @default(auto()) @map("_id") @db.ObjectId
+  isActive      Boolean?
+  lastActive    DateTime?
   notifications Notification[]
   password      String
   roles         Json

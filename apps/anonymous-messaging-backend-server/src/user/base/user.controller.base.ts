@@ -58,6 +58,8 @@ export class UserControllerBase {
         bio: true,
         createdAt: true,
         id: true,
+        isActive: true,
+        lastActive: true,
         roles: true,
         studentEmail: true,
         updatedAt: true,
@@ -86,6 +88,8 @@ export class UserControllerBase {
         bio: true,
         createdAt: true,
         id: true,
+        isActive: true,
+        lastActive: true,
         roles: true,
         studentEmail: true,
         updatedAt: true,
@@ -115,6 +119,8 @@ export class UserControllerBase {
         bio: true,
         createdAt: true,
         id: true,
+        isActive: true,
+        lastActive: true,
         roles: true,
         studentEmail: true,
         updatedAt: true,
@@ -153,6 +159,8 @@ export class UserControllerBase {
           bio: true,
           createdAt: true,
           id: true,
+          isActive: true,
+          lastActive: true,
           roles: true,
           studentEmail: true,
           updatedAt: true,
@@ -190,6 +198,8 @@ export class UserControllerBase {
           bio: true,
           createdAt: true,
           id: true,
+          isActive: true,
+          lastActive: true,
           roles: true,
           studentEmail: true,
           updatedAt: true,
@@ -415,5 +425,39 @@ export class UserControllerBase {
       data,
       select: { id: true },
     });
+  }
+
+  @common.Get("/users/:id/status")
+  @swagger.ApiOkResponse({
+    type: User,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async GetUserStatus(
+    @common.Body()
+    body: UserUpdateInput
+  ): Promise<User> {
+    return this.service.GetUserStatus(body);
+  }
+
+  @common.Post("/users/:id/status")
+  @swagger.ApiOkResponse({
+    type: User,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async UpdateUserStatus(
+    @common.Body()
+    body: UserUpdateInput
+  ): Promise<User> {
+    return this.service.UpdateUserStatus(body);
   }
 }

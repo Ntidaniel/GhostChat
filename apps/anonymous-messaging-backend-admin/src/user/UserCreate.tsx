@@ -5,6 +5,8 @@ import {
   SimpleForm,
   CreateProps,
   TextInput,
+  BooleanInput,
+  DateTimeInput,
   ReferenceArrayInput,
   SelectArrayInput,
   PasswordInput,
@@ -19,6 +21,8 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
     <Create {...props}>
       <SimpleForm>
         <TextInput label="bio" multiline source="bio" />
+        <BooleanInput label="isActive" source="isActive" />
+        <DateTimeInput label="lastActive" source="lastActive" />
         <ReferenceArrayInput
           source="notifications"
           reference="Notification"

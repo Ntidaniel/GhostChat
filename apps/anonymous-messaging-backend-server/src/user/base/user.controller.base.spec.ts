@@ -21,6 +21,8 @@ const CREATE_INPUT = {
   bio: "exampleBio",
   createdAt: new Date(),
   id: "exampleId",
+  isActive: "true",
+  lastActive: new Date(),
   password: "examplePassword",
   studentEmail: "exampleStudentEmail",
   updatedAt: new Date(),
@@ -30,6 +32,8 @@ const CREATE_RESULT = {
   bio: "exampleBio",
   createdAt: new Date(),
   id: "exampleId",
+  isActive: "true",
+  lastActive: new Date(),
   password: "examplePassword",
   studentEmail: "exampleStudentEmail",
   updatedAt: new Date(),
@@ -40,6 +44,8 @@ const FIND_MANY_RESULT = [
     bio: "exampleBio",
     createdAt: new Date(),
     id: "exampleId",
+    isActive: "true",
+    lastActive: new Date(),
     password: "examplePassword",
     studentEmail: "exampleStudentEmail",
     updatedAt: new Date(),
@@ -50,6 +56,8 @@ const FIND_ONE_RESULT = {
   bio: "exampleBio",
   createdAt: new Date(),
   id: "exampleId",
+  isActive: "true",
+  lastActive: new Date(),
   password: "examplePassword",
   studentEmail: "exampleStudentEmail",
   updatedAt: new Date(),
@@ -139,6 +147,7 @@ describe("User", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        lastActive: CREATE_RESULT.lastActive.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -151,6 +160,7 @@ describe("User", () => {
         {
           ...FIND_MANY_RESULT[0],
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
+          lastActive: FIND_MANY_RESULT[0].lastActive.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
         },
       ]);
@@ -174,6 +184,7 @@ describe("User", () => {
       .expect({
         ...FIND_ONE_RESULT,
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
+        lastActive: FIND_ONE_RESULT.lastActive.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -187,6 +198,7 @@ describe("User", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        lastActive: CREATE_RESULT.lastActive.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       })
       .then(function () {

@@ -16,6 +16,7 @@ import {
   MaxLength,
   IsOptional,
   IsDate,
+  IsBoolean,
   ValidateNested,
 } from "class-validator";
 import { Type } from "class-transformer";
@@ -54,6 +55,28 @@ class User {
   @IsString()
   @Field(() => String)
   id!: string;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  isActive!: boolean | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  lastActive!: Date | null;
 
   @ApiProperty({
     required: false,

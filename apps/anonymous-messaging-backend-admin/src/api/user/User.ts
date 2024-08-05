@@ -6,6 +6,8 @@ export type User = {
   bio: string | null;
   createdAt: Date;
   id: string;
+  isActive: boolean | null;
+  lastActive: Date | null;
   notifications?: Array<Notification>;
   roles: JsonValue;
   studentEmail: string | null;

@@ -6,9 +6,9 @@ import {
   ShowProps,
   TextField,
   DateField,
+  BooleanField,
   ReferenceManyField,
   Datagrid,
-  BooleanField,
   ReferenceField,
 } from "react-admin";
 
@@ -22,6 +22,8 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
         <TextField label="bio" source="bio" />
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
+        <BooleanField label="isActive" source="isActive" />
+        <TextField label="lastActive" source="lastActive" />
         <TextField label="Roles" source="roles" />
         <TextField label="studentEmail" source="studentEmail" />
         <DateField source="updatedAt" label="Updated At" />
