@@ -17,11 +17,12 @@ import {
   IsOptional,
   ValidateNested,
 } from "class-validator";
+import { NotificationUpdateManyWithoutUsersInput } from "./NotificationUpdateManyWithoutUsersInput";
+import { Type } from "class-transformer";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
 import { UserInterestUpdateManyWithoutUsersInput } from "./UserInterestUpdateManyWithoutUsersInput";
-import { Type } from "class-transformer";
 
 @InputType()
 class UserUpdateInput {
@@ -36,6 +37,18 @@ class UserUpdateInput {
     nullable: true,
   })
   bio?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => NotificationUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => NotificationUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => NotificationUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  notifications?: NotificationUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

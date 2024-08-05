@@ -26,6 +26,9 @@ import { User } from "./User";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { UserUpdateInput } from "./UserUpdateInput";
+import { NotificationFindManyArgs } from "../../notification/base/NotificationFindManyArgs";
+import { Notification } from "../../notification/base/Notification";
+import { NotificationWhereUniqueInput } from "../../notification/base/NotificationWhereUniqueInput";
 import { UserInterestFindManyArgs } from "../../userInterest/base/UserInterestFindManyArgs";
 import { UserInterest } from "../../userInterest/base/UserInterest";
 import { UserInterestWhereUniqueInput } from "../../userInterest/base/UserInterestWhereUniqueInput";
@@ -201,6 +204,109 @@ export class UserControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/notifications")
+  @ApiNestedQuery(NotificationFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Notification",
+    action: "read",
+    possession: "any",
+  })
+  async findNotifications(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Notification[]> {
+    const query = plainToClass(NotificationFindManyArgs, request.query);
+    const results = await this.service.findNotifications(params.id, {
+      ...query,
+      select: {
+        createdAt: true,
+        id: true,
+        message: true,
+        readStatus: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/notifications")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async connectNotifications(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: NotificationWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      notifications: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/notifications")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async updateNotifications(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: NotificationWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      notifications: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/notifications")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectNotifications(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: NotificationWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      notifications: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)

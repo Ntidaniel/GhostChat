@@ -3,6 +3,7 @@ import { InterestModule } from "./interest/interest.module";
 import { UserInterestModule } from "./userInterest/userInterest.module";
 import { MessageModule } from "./message/message.module";
 import { UserModule } from "./user/user.module";
+import { NotificationModule } from "./notification/notification.module";
 import { AnonymousMessagingModule } from "./anonymousmessaging/anonymousmessaging.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
@@ -29,6 +30,7 @@ import { AuthModule } from "./auth/auth.module";
     UserInterestModule,
     MessageModule,
     UserModule,
+    NotificationModule,
     AnonymousMessagingModule,
     HealthModule,
     PrismaModule,
