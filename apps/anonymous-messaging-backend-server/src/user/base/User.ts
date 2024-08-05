@@ -11,23 +11,38 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { IsJSONValue } from "../../validators";
+
 import {
+  IsOptional,
   IsString,
   MaxLength,
-  IsOptional,
   IsDate,
   IsBoolean,
+  IsInt,
+  Min,
+  Max,
   ValidateNested,
 } from "class-validator";
-import { Type } from "class-transformer";
-import { Notification } from "../../notification/base/Notification";
-import { IsJSONValue } from "../../validators";
+
 import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
+import { Type } from "class-transformer";
+import { Notification } from "../../notification/base/Notification";
 import { UserInterest } from "../../userInterest/base/UserInterest";
 
 @ObjectType()
 class User {
+  @ApiProperty({
+    required: false,
+  })
+  @IsJSONValue()
+  @IsOptional()
+  @Field(() => GraphQLJSON, {
+    nullable: true,
+  })
+  ageRange!: JsonValue;
+
   @ApiProperty({
     required: false,
     type: String,
@@ -77,6 +92,19 @@ class User {
     nullable: true,
   })
   lastActive!: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Min(-999999999)
+  @Max(999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  locationRadius!: number | null;
 
   @ApiProperty({
     required: false,

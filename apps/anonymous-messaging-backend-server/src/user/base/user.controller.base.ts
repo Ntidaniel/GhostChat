@@ -55,11 +55,13 @@ export class UserControllerBase {
     return await this.service.createUser({
       data: data,
       select: {
+        ageRange: true,
         bio: true,
         createdAt: true,
         id: true,
         isActive: true,
         lastActive: true,
+        locationRadius: true,
         roles: true,
         studentEmail: true,
         updatedAt: true,
@@ -85,11 +87,13 @@ export class UserControllerBase {
     return this.service.users({
       ...args,
       select: {
+        ageRange: true,
         bio: true,
         createdAt: true,
         id: true,
         isActive: true,
         lastActive: true,
+        locationRadius: true,
         roles: true,
         studentEmail: true,
         updatedAt: true,
@@ -116,11 +120,13 @@ export class UserControllerBase {
     const result = await this.service.user({
       where: params,
       select: {
+        ageRange: true,
         bio: true,
         createdAt: true,
         id: true,
         isActive: true,
         lastActive: true,
+        locationRadius: true,
         roles: true,
         studentEmail: true,
         updatedAt: true,
@@ -156,11 +162,13 @@ export class UserControllerBase {
         where: params,
         data: data,
         select: {
+          ageRange: true,
           bio: true,
           createdAt: true,
           id: true,
           isActive: true,
           lastActive: true,
+          locationRadius: true,
           roles: true,
           studentEmail: true,
           updatedAt: true,
@@ -195,11 +203,13 @@ export class UserControllerBase {
       return await this.service.deleteUser({
         where: params,
         select: {
+          ageRange: true,
           bio: true,
           createdAt: true,
           id: true,
           isActive: true,
           lastActive: true,
+          locationRadius: true,
           roles: true,
           studentEmail: true,
           updatedAt: true,
@@ -427,6 +437,23 @@ export class UserControllerBase {
     });
   }
 
+  @common.Get("/users/:id/filtered-users")
+  @swagger.ApiOkResponse({
+    type: User,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async FetchUsersBasedOnFilters(
+    @common.Body()
+    body: UserUpdateInput
+  ): Promise<User[]> {
+    return this.service.FetchUsersBasedOnFilters(body);
+  }
+
   @common.Get("/users/:id/status")
   @swagger.ApiOkResponse({
     type: User,
@@ -442,6 +469,23 @@ export class UserControllerBase {
     body: UserUpdateInput
   ): Promise<User> {
     return this.service.GetUserStatus(body);
+  }
+
+  @common.Post("/users/:id/filters")
+  @swagger.ApiOkResponse({
+    type: User,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async UpdateUserFilters(
+    @common.Body()
+    body: UserUpdateInput
+  ): Promise<User> {
+    return this.service.UpdateUserFilters(body);
   }
 
   @common.Post("/users/:id/status")
