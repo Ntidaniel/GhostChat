@@ -11,52 +11,46 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import {
-  IsString,
-  MaxLength,
-  IsOptional,
-  IsBoolean,
-  ValidateNested,
-} from "class-validator";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
-import { Type } from "class-transformer";
+import { IsOptional, IsEnum } from "class-validator";
+import { SortOrder } from "../../util/SortOrder";
 
-@InputType()
-class NotificationCreateInput {
+@InputType({
+  isAbstract: true,
+  description: undefined,
+})
+class MessageDtoOrderByInput {
   @ApiProperty({
     required: false,
-    type: String,
+    enum: ["asc", "desc"],
   })
-  @IsString()
-  @MaxLength(1000)
   @IsOptional()
-  @Field(() => String, {
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
     nullable: true,
   })
-  message?: string | null;
+  createdAt?: SortOrder;
 
   @ApiProperty({
     required: false,
-    type: Boolean,
+    enum: ["asc", "desc"],
   })
-  @IsBoolean()
   @IsOptional()
-  @Field(() => Boolean, {
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
     nullable: true,
   })
-  readStatus?: boolean | null;
+  id?: SortOrder;
 
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    enum: ["asc", "desc"],
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput | null;
+  updatedAt?: SortOrder;
 }
 
-export { NotificationCreateInput as NotificationCreateInput };
+export { MessageDtoOrderByInput as MessageDtoOrderByInput };

@@ -21,7 +21,7 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { NotificationService } from "../notification.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { NotificationCreateInput } from "./NotificationCreateInput";
+import { NotificationCreateInput } from "../../notificationCreateInput/base/NotificationCreateInput";
 import { Notification } from "./Notification";
 import { NotificationFindManyArgs } from "./NotificationFindManyArgs";
 import { NotificationWhereUniqueInput } from "./NotificationWhereUniqueInput";

@@ -25,6 +25,22 @@ import { NotificationList } from "./notification/NotificationList";
 import { NotificationCreate } from "./notification/NotificationCreate";
 import { NotificationEdit } from "./notification/NotificationEdit";
 import { NotificationShow } from "./notification/NotificationShow";
+import { UserUpdateInputList } from "./userUpdateInput/UserUpdateInputList";
+import { UserUpdateInputCreate } from "./userUpdateInput/UserUpdateInputCreate";
+import { UserUpdateInputEdit } from "./userUpdateInput/UserUpdateInputEdit";
+import { UserUpdateInputShow } from "./userUpdateInput/UserUpdateInputShow";
+import { NotificationCreateInputList } from "./notificationCreateInput/NotificationCreateInputList";
+import { NotificationCreateInputCreate } from "./notificationCreateInput/NotificationCreateInputCreate";
+import { NotificationCreateInputEdit } from "./notificationCreateInput/NotificationCreateInputEdit";
+import { NotificationCreateInputShow } from "./notificationCreateInput/NotificationCreateInputShow";
+import { MessageDtoList } from "./messageDto/MessageDtoList";
+import { MessageDtoCreate } from "./messageDto/MessageDtoCreate";
+import { MessageDtoEdit } from "./messageDto/MessageDtoEdit";
+import { MessageDtoShow } from "./messageDto/MessageDtoShow";
+import { UserInterestDtoList } from "./userInterestDto/UserInterestDtoList";
+import { UserInterestDtoCreate } from "./userInterestDto/UserInterestDtoCreate";
+import { UserInterestDtoEdit } from "./userInterestDto/UserInterestDtoEdit";
+import { UserInterestDtoShow } from "./userInterestDto/UserInterestDtoShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -85,6 +101,34 @@ const App = (): React.ReactElement => {
           edit={NotificationEdit}
           create={NotificationCreate}
           show={NotificationShow}
+        />
+        <Resource
+          name="UserUpdateInput"
+          list={UserUpdateInputList}
+          edit={UserUpdateInputEdit}
+          create={UserUpdateInputCreate}
+          show={UserUpdateInputShow}
+        />
+        <Resource
+          name="NotificationCreateInput"
+          list={NotificationCreateInputList}
+          edit={NotificationCreateInputEdit}
+          create={NotificationCreateInputCreate}
+          show={NotificationCreateInputShow}
+        />
+        <Resource
+          name="MessageDto"
+          list={MessageDtoList}
+          edit={MessageDtoEdit}
+          create={MessageDtoCreate}
+          show={MessageDtoShow}
+        />
+        <Resource
+          name="UserInterestDto"
+          list={UserInterestDtoList}
+          edit={UserInterestDtoEdit}
+          create={UserInterestDtoCreate}
+          show={UserInterestDtoShow}
         />
       </Admin>
     </div>

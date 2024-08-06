@@ -4,6 +4,10 @@ import { UserInterestModule } from "./userInterest/userInterest.module";
 import { MessageModule } from "./message/message.module";
 import { UserModule } from "./user/user.module";
 import { NotificationModule } from "./notification/notification.module";
+import { UserUpdateInputModule } from "./userUpdateInput/userUpdateInput.module";
+import { NotificationCreateInputModule } from "./notificationCreateInput/notificationCreateInput.module";
+import { MessageDtoModule } from "./messageDto/messageDto.module";
+import { UserInterestDtoModule } from "./userInterestDto/userInterestDto.module";
 import { AnonymousMessagingModule } from "./anonymousmessaging/anonymousmessaging.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
@@ -31,6 +35,10 @@ import { AuthModule } from "./auth/auth.module";
     MessageModule,
     UserModule,
     NotificationModule,
+    UserUpdateInputModule,
+    NotificationCreateInputModule,
+    MessageDtoModule,
+    UserInterestDtoModule,
     AnonymousMessagingModule,
     HealthModule,
     PrismaModule,

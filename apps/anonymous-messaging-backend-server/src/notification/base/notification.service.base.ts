@@ -18,7 +18,7 @@ import {
 import { NotificationFindManyArgs } from "./NotificationFindManyArgs";
 import { Notification } from "./Notification";
 import { NotificationWhereUniqueInput } from "./NotificationWhereUniqueInput";
-import { NotificationCreateInput } from "./NotificationCreateInput";
+import { NotificationCreateInput } from "../../notificationCreateInput/base/NotificationCreateInput";
 
 export class NotificationServiceBase {
   constructor(protected readonly prisma: PrismaService) {}

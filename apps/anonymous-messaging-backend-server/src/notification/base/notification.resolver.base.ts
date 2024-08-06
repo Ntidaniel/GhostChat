@@ -28,7 +28,7 @@ import { UpdateNotificationArgs } from "./UpdateNotificationArgs";
 import { DeleteNotificationArgs } from "./DeleteNotificationArgs";
 import { User } from "../../user/base/User";
 import { NotificationWhereUniqueInput } from "./NotificationWhereUniqueInput";
-import { NotificationCreateInput } from "./NotificationCreateInput";
+import { NotificationCreateInput } from "../../notificationCreateInput/base/NotificationCreateInput";
 import { NotificationService } from "../notification.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Notification)

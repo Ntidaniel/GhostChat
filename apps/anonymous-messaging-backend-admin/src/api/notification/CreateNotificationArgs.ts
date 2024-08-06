@@ -1,4 +1,4 @@
-import { NotificationCreateInput } from "./NotificationCreateInput";
+import { NotificationCreateInput } from "../notificationCreateInput/NotificationCreateInput";
 
 export type CreateNotificationArgs = {
   data: NotificationCreateInput;
