@@ -14,7 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
-import { UserUpdateInput } from "./UserUpdateInput";
+import { UserUpdateInput } from "../../userUpdateInput/base/UserUpdateInput";
 
 @ArgsType()
 class UpdateUserArgs {

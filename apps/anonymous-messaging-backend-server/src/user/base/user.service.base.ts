@@ -22,7 +22,7 @@ import { PasswordService } from "../../auth/password.service";
 import { transformStringFieldUpdateInput } from "../../prisma.util";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { User } from "./User";
-import { UserUpdateInput } from "./UserUpdateInput";
+import { UserUpdateInput } from "../../userUpdateInput/base/UserUpdateInput";
 
 export class UserServiceBase {
   constructor(

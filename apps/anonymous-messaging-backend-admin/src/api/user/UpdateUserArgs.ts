@@ -1,5 +1,5 @@
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
-import { UserUpdateInput } from "./UserUpdateInput";
+import { UserUpdateInput } from "../userUpdateInput/UserUpdateInput";
 
 export type UpdateUserArgs = {
   where: UserWhereUniqueInput;

@@ -31,7 +31,7 @@ import { Notification } from "../../notification/base/Notification";
 import { UserInterestFindManyArgs } from "../../userInterest/base/UserInterestFindManyArgs";
 import { UserInterest } from "../../userInterest/base/UserInterest";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
-import { UserUpdateInput } from "./UserUpdateInput";
+import { UserUpdateInput } from "../../userUpdateInput/base/UserUpdateInput";
 import { UserService } from "../user.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => User)

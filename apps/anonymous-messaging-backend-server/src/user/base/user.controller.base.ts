@@ -25,7 +25,7 @@ import { UserCreateInput } from "./UserCreateInput";
 import { User } from "./User";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
-import { UserUpdateInput } from "./UserUpdateInput";
+import { UserUpdateInput } from "../../userUpdateInput/base/UserUpdateInput";
 import { NotificationFindManyArgs } from "../../notification/base/NotificationFindManyArgs";
 import { Notification } from "../../notification/base/Notification";
 import { NotificationWhereUniqueInput } from "../../notification/base/NotificationWhereUniqueInput";
